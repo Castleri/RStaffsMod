@@ -103,9 +103,9 @@ namespace RStaffsMod.Staffs.DiamondStaff
         {
             return false;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
-            for(int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Vector2 speed = new Vector2(0, -3).RotatedBy(MathHelper.PiOver2 * i);
                 Dust dust;
