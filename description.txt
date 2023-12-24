@@ -34,3 +34,10 @@ Please report any bugs you encounter
 
 1.2.3
 -Zap sound fix
+
+1.2.4 and 1.2.4.1
+-Tweaks not worth telling
+-Mostly an update to keep up with tmod's version
+
+1.2.4.2
+-Emerald Bolts have less spread
