@@ -1,0 +1,25 @@
+Buffs: {
+	EmBuff: {
+		DisplayName: Emerald Field
+		Description: +1 Magic!
+	}
+}
+
+Projectiles: {
+	Charger.DisplayName: Charger
+	Crawler.DisplayName: Crawler
+	AmeCrystal.DisplayName: Ame Crystal
+	DiaBolt.DisplayName: Dia Bolt
+	EmBolt.DisplayName: Em Bolt
+	EmField.DisplayName: Em Field
+	FieldStarter.DisplayName: Field Starter
+	FieldStarter1.DisplayName: Field Starter1
+	BoltEx.DisplayName: Bolt Ex
+	Rubies.DisplayName: Rubies
+	RuBolt.DisplayName: Ru Bolt
+	RubyExplosion.DisplayName: Ruby Explosion
+	SapBolt.DisplayName: Sap Bolt
+	Sapphires.DisplayName: Sapphires
+	TopBolt.DisplayName: Top Bolt
+	Zap.DisplayName: Zap
+}
