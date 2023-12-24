@@ -36,7 +36,7 @@ namespace RStaffsMod.Staffs.EmeraldStaff
             Projectile.ai[0]++;
             Projectile.ai[1]++;
 
-            if (Projectile.ai[1] == 1) dev = Main.rand.NextFloat(-0.37f, 0.37f);
+            if (Projectile.ai[1] == 1) dev = Main.rand.NextFloat(-0.15f, 0.15f);
             else if (Projectile.ai[1] > 5 && Projectile.ai[1] <= 25) Projectile.velocity += new Vector2(0, dev).RotatedBy(Projectile.rotation);
 
             if (Projectile.ai[0] >= 480)
