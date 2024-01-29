@@ -38,7 +38,7 @@ namespace RStaffsMod.Staffs.SapphireStaff
                 for (int a = 0; a < numproj; a++)
                 {
                     Vector2 Speed = new Vector2(0.1f, 0.1f).RotatedBy(MathHelper.Lerp(-rotation, rotation, a / (numproj)));
-                    Projectile.NewProjectile(Projectile.GetSource_Death(),Projectile.Center, Speed, ModContent.ProjectileType<Sapphires>(), (int)(Projectile.damage * 0.8f), 0, Projectile.owner, 0, (float)(a * 45));
+                    Projectile.NewProjectile(Projectile.GetSource_Death(),player.Center, Speed, ModContent.ProjectileType<Sapphires>(), (int)(Projectile.damage * 0.6f), 0, Projectile.owner, 0, (float)(a * 45));
                 }
                 SoundEngine.PlaySound(SoundID.Item28);
                 for (int i = 0; i < 20; i++)

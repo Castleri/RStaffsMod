@@ -10,10 +10,7 @@ namespace RStaffsMod.Staffs.DiamondStaff
 {
     public class DiaBolt : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = true;
-        }
+        private int alphaTime;
         public override void SetDefaults()
         {
             Projectile.friendly = true;
@@ -28,6 +25,8 @@ namespace RStaffsMod.Staffs.DiamondStaff
         }
         public override void AI()
         {
+            alphaTime += 17;
+            if (alphaTime >= 255) alphaTime *= -1;
             Projectile.ai[0]++;
             Projectile.ai[1]++;
             if(Projectile.ai[1] >= 3)
@@ -42,7 +41,7 @@ namespace RStaffsMod.Staffs.DiamondStaff
             //Wait 10 frames to start homing
             if(Projectile.ai[0] >= 10)
             {
-                float d = 128;
+                float d = 112;
                 bool targetfound = false;
                 Vector2 targetcenter = Projectile.position;
                 for (int i = 0; i < Main.maxNPCs; i++)
@@ -62,7 +61,7 @@ namespace RStaffsMod.Staffs.DiamondStaff
                 }
                 if (targetfound)
                 {
-                    Projectile.velocity = ((Vector2.Normalize(targetcenter - Projectile.Center)) + Projectile.oldVelocity * 0.87f);
+                    Projectile.velocity = ((Vector2.Normalize(targetcenter - Projectile.Center)) + Projectile.oldVelocity * 1f);
 
                     float velx = Math.Abs(Projectile.velocity.X);
                     float vely = Math.Abs(Projectile.velocity.Y);
@@ -94,11 +93,17 @@ namespace RStaffsMod.Staffs.DiamondStaff
             Vector2 value = new Vector2(Projectile.width, Projectile.height) / 2f;
             Vector2 origin = source.Size() / 2f;
             Color color = Projectile.GetAlpha(Color.GhostWhite);
+            byte alpha;
+            if (alphaTime < 0) alpha = (byte)(alphaTime * -1);
+            else alpha = (byte)alphaTime;
+            color.A = alpha;
             DrawData data = new(texture, Projectile.position + value - Main.screenPosition, source, color, Projectile.rotation, origin, Projectile.scale, SpriteEffects.None, 0f);
             Main.EntitySpriteDraw(data);
+            Main.spriteBatch.End();
+            Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.AnisotropicClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
+
             return false;
         }
-
         public override bool? CanCutTiles()
         {
             return false;

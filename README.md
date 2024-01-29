@@ -1,1 +1,1 @@
-# RStaffsMod
+# Alternative Gem Staffs Mod
