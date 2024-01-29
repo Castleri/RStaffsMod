@@ -36,6 +36,8 @@ namespace RStaffsMod.Staffs.AmberStaff
             Projectile.hide = true;
             maxSpeed = 5.25f;
             Projectile.timeLeft = 600;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 12;
         }
         private int c;
         public override void AI()
@@ -107,6 +109,7 @@ namespace RStaffsMod.Staffs.AmberStaff
         {
             didHit = true;
             Projectile.frame = 2;
+            Projectile.frameCounter = 7;
             Projectile.netUpdate = true;
             switch (target.type)
             {
@@ -131,11 +134,12 @@ namespace RStaffsMod.Staffs.AmberStaff
                     break;
             }
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
-            SoundEngine.PlaySound(SoundID.NPCDeath1,Projectile.position);
+            SoundEngine.PlaySound(SoundID.NPCDeath1, Projectile.position);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity, GoreID.TombCrawlerHead);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity, GoreID.TombCrawlerTail);
+            base.OnKill(timeLeft);
         }
 
         private void CheckCollideBlocks()
@@ -156,8 +160,10 @@ namespace RStaffsMod.Staffs.AmberStaff
             //If it is not colliding, gravity takes place
             else
             {
-                if (!didHit)
+                if (!didHit && --Projectile.frameCounter <= 0)
+                {
                     Projectile.frame = 1;
+                }
 
                 Projectile.ai[0] = 0;
                 Projectile.velocity.Y += 0.2f;
@@ -175,7 +181,7 @@ namespace RStaffsMod.Staffs.AmberStaff
                 for (int i = 0; i < Main.maxNPCs; i++)
                 {
                     NPC npc = Main.npc[i];
-                    if (npc.CanBeChasedBy())
+                    if (npc.CanBeChasedBy() && npc.active)
                     {
                         float dpt = Vector2.Distance(player.Center, npc.Center);
                         bool inRange = dpt < distance;
@@ -183,7 +189,7 @@ namespace RStaffsMod.Staffs.AmberStaff
                         {
                             distance = dpt;
                             found = true;
-                            centergo = npc.Center;
+                            centergo = npc.Center + new Vector2(0, npc.height/2);
                         }
                     }
                 }
@@ -191,7 +197,7 @@ namespace RStaffsMod.Staffs.AmberStaff
                 {
                     float accel;
                     accel = 0.6f;
-                    maxSpeed = 5.25f;
+                    maxSpeed = 5f;
                     Projectile.velocity = Vector2.Normalize(centergo - Projectile.Center) * accel + Projectile.oldVelocity;
                 }
 

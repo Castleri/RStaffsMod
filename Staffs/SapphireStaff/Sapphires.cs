@@ -41,8 +41,10 @@ namespace RStaffsMod.Staffs.SapphireStaff
             double deg = (double)Projectile.ai[1]; 
             double rad = deg * (Math.PI / 180);
             double dist = t;
-            Projectile.position.X = player.Center.X - (int)(Math.Cos(rad) * dist) - Projectile.width / 2;
-            Projectile.position.Y = player.Center.Y - (int)(Math.Sin(rad) * dist) - Projectile.height / 2; 
+            
+            float Xcom = (float)(Math.Cos(rad) * dist);
+            float Ycom = (float)(Math.Sin(rad) * dist);
+            Projectile.velocity = Vector2.Lerp(Projectile.velocity, player.Center - Projectile.Center + new Vector2(Xcom,Ycom), 0.34f);
             Projectile.ai[1] += 2.2f;
 
             if (Projectile.ai[0] >= 528) t += 6;

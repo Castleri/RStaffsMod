@@ -82,7 +82,7 @@ namespace RStaffsMod.Staffs.RubyStaff
             
             return true;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Projectile.NewProjectile(Projectile.GetSource_Death(),Projectile.Center, Vector2.Zero, ModContent.ProjectileType<BoltEx>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Projectile.owner);
         }
