@@ -22,4 +22,5 @@ Projectiles: {
 	Sapphires.DisplayName: Sapphires
 	TopBolt.DisplayName: Top Bolt
 	Zap.DisplayName: Zap
+	FrostBolt.DisplayName: Frost Bolt
 }

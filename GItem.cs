@@ -89,6 +89,13 @@ namespace RStaffsMod
                 case ItemID.ThunderStaff:
                     item.damage -= 2;
                     break;
+                case ItemID.FrostStaff:
+                    item.damage = 18;
+                    item.useTime = 6;
+                    item.useAnimation = 6;
+                    item.mana = 3;
+                    //item.shoot = ModContent.ProjectileType<Staffs.FrostStaff.FrostBolt>();
+                    break;
 
             }
             base.SetDefaults(item);
