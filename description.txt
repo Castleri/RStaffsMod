@@ -11,7 +11,9 @@ It does not add new Staffs, but changes the original Gem Staffs to have new stat
 - [c/f19f00:Amber Staff]: Summons Tomb Crawlers with limited life that target enemies
 - [c/36c1dd:Thunder Zapper]: Hitting an enemy also zaps a nearby enemy quickly that can also zap another enemy in a chain
 
-Try them all and have fun
+Plans for the future
+* Improve the visuals of most projectiles 
+* Add a rework for Frost Staff. This would be the last Vanilla weapon I change
 
 
 This is my first mod, so I appreciate all the feedback you could give
@@ -41,3 +43,7 @@ Please report any bugs you encounter
 
 1.2.4.2
 -Emerald Bolts have less spread
+
+1.2.4.3
+-So apparently I was using the wrong modification and that made Amethyst Staff do absurd amounts of damage. Should be fixed
+-With that, I also reduced most staves' damage by some amount.

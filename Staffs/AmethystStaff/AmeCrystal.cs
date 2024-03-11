@@ -60,7 +60,7 @@ namespace RStaffsMod.Staffs.AmethystStaff
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 
         {
-            if (target.defense > Projectile.damage) modifiers.FlatBonusDamage += 5;
+            if (target.defense > 4) modifiers.FlatBonusDamage += 5;
         }
     }
 }

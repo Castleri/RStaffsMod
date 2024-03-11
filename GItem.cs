@@ -18,7 +18,7 @@ namespace RStaffsMod
             switch (id)
             {
                 case ItemID.AmethystStaff:
-                    item.damage = 8;
+                    item.damage = 6;
                     item.useTime = 16;
                     item.useAnimation = 16;
                     item.shoot = ModContent.ProjectileType<Staffs.AmethystStaff.AmeCrystal>();
@@ -44,9 +44,10 @@ namespace RStaffsMod
                     item.useTime = 24;
                     item.useAnimation = 24;
                     item.rare = ItemRarityID.Blue;
+                    item.damage = 16;
                     break;
                 case ItemID.EmeraldStaff:
-                    item.damage = 20;
+                    item.damage = 19;
                     item.useTime = 9;
                     item.useAnimation = 27;
                     item.reuseDelay = 25;
@@ -57,7 +58,7 @@ namespace RStaffsMod
                     break;
                 case ItemID.RubyStaff:
                     item.autoReuse = true;
-                    item.damage = 25;
+                    item.damage = 22;
                     item.shootSpeed = 8.5f;
                     item.UseSound = SoundID.Item45;
                     item.useTime = 24;
@@ -67,7 +68,7 @@ namespace RStaffsMod
                     item.knockBack = 6.25f;
                     break;
                 case ItemID.DiamondStaff:
-                    item.damage = 17;
+                    item.damage = 15;
                     item.useAnimation = 21;
                     item.useTime = 21;
                     item.shoot = ModContent.ProjectileType<Staffs.DiamondStaff.DiaBolt>();
@@ -80,14 +81,14 @@ namespace RStaffsMod
                 case ItemID.AmberStaff:
                     item.shoot = ModContent.ProjectileType<Staffs.AmberStaff.Crawler>();
                     item.knockBack = 1.75f;
-                    item.damage = 13;
+                    item.damage = 11;
                     item.shootSpeed = 9.75f;
                     item.mana = 15;
                     item.useTime = 24;
                     item.useAnimation = 24;
                     break;
                 case ItemID.ThunderStaff:
-                    item.damage -= 2;
+                    item.damage -= 3;
                     break;
 
             }
