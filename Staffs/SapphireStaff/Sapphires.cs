@@ -53,6 +53,7 @@ namespace RStaffsMod.Staffs.SapphireStaff
             {
                 Projectile.Kill();
             }
+            Projectile.rotation = Vector2.Normalize(player.Center - Projectile.Center).ToRotation() - MathHelper.Pi;
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

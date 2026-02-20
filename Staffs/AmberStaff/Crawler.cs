@@ -136,7 +136,7 @@ namespace RStaffsMod.Staffs.AmberStaff
         }
         public override void OnKill(int timeLeft)
         {
-            SoundEngine.PlaySound(SoundID.NPCDeath1, Projectile.position);
+            SoundEngine.PlaySound(SoundID.NPCDeath1 with { Volume = Main.soundVolume * 0.5f }, Projectile.position);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity, GoreID.TombCrawlerHead);
             Gore.NewGore(Projectile.GetSource_Death(), Projectile.position, Projectile.velocity, GoreID.TombCrawlerTail);
             base.OnKill(timeLeft);

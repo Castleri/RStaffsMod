@@ -48,9 +48,9 @@ namespace RStaffsMod
                     break;
                 case ItemID.EmeraldStaff:
                     item.damage = 19;
-                    item.useTime = 9;
-                    item.useAnimation = 27;
-                    item.reuseDelay = 25;
+                    item.useTime = 8;
+                    item.useAnimation = 24;
+                    item.reuseDelay = 7;
                     item.rare = ItemRarityID.Blue;
                     item.shoot = ModContent.ProjectileType<Staffs.EmeraldStaff.EmBolt>();
                     item.shootSpeed = 9.75f;
@@ -86,6 +86,8 @@ namespace RStaffsMod
                     item.mana = 15;
                     item.useTime = 24;
                     item.useAnimation = 24;
+                    item.useStyle = ItemUseStyleID.RaiseLamp;
+                    item.holdStyle = ItemHoldStyleID.HoldLamp;
                     break;
                 case ItemID.ThunderStaff:
                     item.damage -= 3;
@@ -93,6 +95,33 @@ namespace RStaffsMod
 
             }
             base.SetDefaults(item);
+        }
+        public override void HoldStyle(Item item, Player player, Rectangle heldItemFrame)
+        {
+            if (item.type == ItemID.AmberStaff) 
+            { 
+                player.itemRotation -= MathHelper.PiOver4 * player.direction;
+                player.itemLocation += new Vector2(8 * player.direction, 4);
+            }
+            base.HoldStyle(item, player, heldItemFrame);
+        }
+        public override void UseAnimation(Item item, Player player)
+        {
+            if (item.type == ItemID.AmberStaff)
+            {
+                player.itemRotation -= MathHelper.PiOver4 * player.direction;
+                player.itemLocation += new Vector2(6 * player.direction, 2);
+            }
+            base.UseAnimation(item, player);
+        }
+        public override void UseItemFrame(Item item, Player player)
+        {
+            if (item.type == ItemID.AmberStaff)
+            {
+                player.itemRotation -= MathHelper.PiOver4 * player.direction;
+                player.itemLocation += new Vector2(6 * player.direction, 2);
+            }
+            base.UseItemFrame(item, player);
         }
         public override bool AltFunctionUse(Item item, Player player)
         {
@@ -252,7 +281,7 @@ namespace RStaffsMod
                     tooltips.Add(line744);
                     break;
                 case ItemID.AmberStaff:
-                    var line3377 = new TooltipLine(Mod, "", "Summons Tomb Crawlers that bite enemies\nTomb Crawlers lose life when they hit enemies");
+                    var line3377 = new TooltipLine(Mod, "", "Summons Tomb Crawlers from the underground\nTomb Crawlers lose life when they hit enemies");
                     tooltips.Add(line3377);
                     break;
                 case ItemID.ThunderStaff:
